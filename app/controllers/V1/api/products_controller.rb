@@ -25,4 +25,26 @@ class V1::Api::ProductsController < ApplicationController
             render json: {error: "Product not found"}
         end
     end
+    def edit
+        @product = Product.find(params[:id])
+    end
+    def update
+        product = Product.find(params[:id])
+        if product.update(product_params)
+            render json: product
+        else
+            render json: {error: "Product not updated"}
+        end
+    end
+    def destroy
+        product = Product.find(params[:id])
+        if product.destroy
+            render json: {message: "Product deleted"}
+        else
+            render json: {error: "Product not deleted"}
+        end
+    end
+    def product_params
+        params.require(:product).permit(:name, :price, :description)
+    end
 end
