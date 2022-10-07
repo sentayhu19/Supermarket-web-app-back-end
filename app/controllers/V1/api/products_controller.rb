@@ -17,6 +17,7 @@ class V1::Api::ProductsController < ApplicationController
         else
             render json: {error: "Product not saved"}
         end
+    end
     def show
         @product = Product.find(params[:id])
         if @product
