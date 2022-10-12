@@ -4,9 +4,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  # scope :v1 do
-  #   devise_for :users, controllers: {sessions: 'v1/api/sessions', registrations: 'v1/api/registrations'}
-  # end
+  scope :v1 do
+    devise_for :users, controllers: {sessions: 'v1/api/sessions', registrations: 'v1/api/registrations'}
+  end
   namespace :v1 do
     namespace :api do
       resources :products
